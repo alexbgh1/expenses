@@ -1,10 +1,9 @@
 "use client";
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HomeIcon, TagIcon, TicketIcon } from "@/app/icons/icons";
 
-const MobileNavigation = () => {
+const MenuNavigation = () => {
   const path = usePathname();
   const isActive = (href: string) => path === href;
 
@@ -15,10 +14,10 @@ const MobileNavigation = () => {
   ];
 
   return (
-    <nav className="p-4">
-      <ul className="flex flex-col gap-4 ">
+    <nav className="p-4 w-full">
+      <ul className="flex flex-col gap-2 ">
         {routes.map((route) => (
-          <MobileNavigationItem
+          <MenuNavigationItem
             key={route.href}
             href={route.href}
             Icon={route.Icon}
@@ -28,14 +27,14 @@ const MobileNavigation = () => {
             classNameIcon={`${isActive(route.href) ? "text-gray-800" : "text-gray-500"}`}
           >
             {route.label}
-          </MobileNavigationItem>
+          </MenuNavigationItem>
         ))}
       </ul>
     </nav>
   );
 };
 
-interface MobileNavigationItemProps {
+interface MenuNavigationItemProps {
   Icon?: React.ElementType;
   href: string;
   children: React.ReactNode;
@@ -43,7 +42,7 @@ interface MobileNavigationItemProps {
   classNameIcon?: string;
 }
 
-const MobileNavigationItem = ({ Icon, href, children, className, classNameIcon }: MobileNavigationItemProps) => {
+const MenuNavigationItem = ({ Icon, href, children, className, classNameIcon }: MenuNavigationItemProps) => {
   return (
     <li>
       <Link href={href} className={className}>
@@ -54,4 +53,4 @@ const MobileNavigationItem = ({ Icon, href, children, className, classNameIcon }
   );
 };
 
-export default MobileNavigation;
+export default MenuNavigation;
