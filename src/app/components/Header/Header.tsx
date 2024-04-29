@@ -1,4 +1,4 @@
-import NavigationMobile from "./Navigation/NavigationMobile";
+import NavigationMobile from "../Navigation/NavigationMobile";
 
 const Header = () => {
   return (
