@@ -1,4 +1,5 @@
 import { MoreVerticalIcon } from "@/app/icons/icons";
+import Badge from "../Badge";
 const TableTransactions = () => {
   return (
     <table className="w-full text-sm text-left rtl:text-right text-gray-500">
@@ -17,7 +18,9 @@ const TableTransactions = () => {
         <tr className="text-gray-700 hover:bg-gray-50 border-b transition-colors">
           <td className="px-4 py-2">2021-01-01</td>
           <td className="px-4 py-2">Rent</td>
-          <td className="px-4 py-2">Housing</td>
+          <td className="px-4 py-2">
+            <Badge emoji="🏠" text="home" />
+          </td>
           <td className="text-right px-4 py-2">$1000</td>
           <td className="px-4 py-2">
             <button className="hover:text-gray-800 hover:bg-gray-200 py-2 px-1">
@@ -29,7 +32,9 @@ const TableTransactions = () => {
         <tr className="text-gray-700 hover:bg-gray-50 border-b transition-colors">
           <td className="px-4 py-2">2021-01-02</td>
           <td className="px-4 py-2">Groceries</td>
-          <td className="px-4 py-2">Groceries</td>
+          <td className="px-4 py-2">
+            <Badge emoji="🍞" text="food" />
+          </td>
           <td className="text-right px-4 py-2">$100</td>
           <td className="px-4 py-2">
             <button className="hover:text-gray-800 hover:bg-gray-200 py-2 px-1">
@@ -41,7 +46,9 @@ const TableTransactions = () => {
         <tr className="text-gray-700 hover:bg-gray-50 border-b transition-colors">
           <td className="px-4 py-2">2021-01-03</td>
           <td className="px-4 py-2">Gas</td>
-          <td className="px-4 py-2">Transportation</td>
+          <td className="px-4 py-2">
+            <Badge emoji="🚗" text="transport" />
+          </td>
           <td className="text-right  px-4 py-2">$50</td>
           <td className="px-4 py-2">
             <button className="hover:text-gray-800 hover:bg-gray-200 py-2 px-1">
