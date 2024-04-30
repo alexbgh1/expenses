@@ -6,13 +6,9 @@ interface BadgeProps {
   text: Category;
 }
 const Badge = ({ emoji, text }: BadgeProps) => {
-  const textColor = CATEGORY_COLORS[text].textColor.light;
-  const bgColor = CATEGORY_COLORS[text].bgColor.light;
+  const className = CATEGORY_COLORS[text].className;
   return (
-    <div
-      className="capitalize rounded-full px-2 py-1 flex w-min"
-      style={{ color: textColor, backgroundColor: bgColor }}
-    >
+    <div className={`capitalize rounded-full px-2 py-1 flex w-min ${className}`}>
       {emoji && <span className="mr-1">{emoji}</span>}
       {text}
     </div>
