@@ -1,6 +1,6 @@
 import Header from "./components/Header/Header";
 import NavigationMain from "./components/Navigation/NavigationMain";
-import DragAndDropFile from "./components/DragAndDrop";
+import DragAndDropFile from "./components/DragAndDropFile";
 import TableTransactions from "./components/Table/TableTransactions";
 
 export default function Home() {
