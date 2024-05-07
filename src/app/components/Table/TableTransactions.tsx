@@ -31,7 +31,7 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
 
   return (
     <>
-      <table className="w-full table-fixed text-sm text-left rtl:text-right text-gray-500">
+      <table className="min-w-full w-auto min-h-96 table-fixed text-sm text-left rtl:text-right text-gray-500">
         <thead className="text-xs font-light hover:bg-gray-50">
           <tr className="border-b transition-colors">
             <th className="h-12 px-4 py-2">
@@ -68,7 +68,7 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
               </button>
             </th>
 
-            <th className="h-12 px-4 py-2">
+            <th className="relative h-12 px-4 py-2">
               <span className="sr-only">Actions</span>
             </th>
           </tr>
@@ -85,7 +85,7 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
               </td>
               <td className="text-right px-4 py-2">{transaction.price}</td>
               <td className="px-4 py-2">
-                <button className="hover:text-gray-800 hover:bg-gray-200 py-2 px-1">
+                <button className="relative hover:text-gray-800 hover:bg-gray-200 py-2 px-1">
                   <MoreVerticalIcon className="w-4 h-4" />
                   <span className="sr-only">Edit</span>
                 </button>

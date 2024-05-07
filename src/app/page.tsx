@@ -32,11 +32,9 @@ export default function Home() {
       <main className="flex min-h-screen">
         <NavigationMain />
         <div className="flex-1 p-6 h-full overflow-y-auto">
-          <div>
-            <DragAndDropFile acceptedTypes={["csv", "txt"]} setFile={setFile} />
-          </div>
+          <DragAndDropFile acceptedTypes={["csv", "txt"]} setFile={setFile} />
           <h1 className="pt-2 pb-4 text-lg">Transactions</h1>
-          <div className="overflow-x-auto">
+          <div className="h-full overflow-x-auto">
             <TableTransactions transactions={transactions} />
           </div>
         </div>
