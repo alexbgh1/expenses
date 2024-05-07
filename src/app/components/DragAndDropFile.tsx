@@ -4,16 +4,21 @@ import useDragAndDropFile from "../hooks/useDragAndDropFile";
 import { acceptanceTypesPlain } from "../utils/validationFile";
 
 interface DragAndDropFileProps {
+  setFile: (file: File | null) => void;
   acceptedTypes: string[]; // Change to an array of string
 }
 
-const DragAndDropFile = ({ acceptedTypes }: DragAndDropFileProps) => {
+const DragAndDropFile = ({ acceptedTypes, setFile }: DragAndDropFileProps) => {
   //TODO: Refactor using custom hooks
   const { file, errorMsg, draggingOver, handleDrop, handleChange, handleDragOver, handleDragLeave } =
     useDragAndDropFile(acceptedTypes);
 
   const id = useId();
   const acceptanceTypes = acceptanceTypesPlain(acceptedTypes);
+
+  useEffect(() => {
+    setFile(file);
+  }, [file]);
 
   return (
     <div
