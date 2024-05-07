@@ -38,7 +38,7 @@ const EMOJI_BASED_ON_CATEGORY: Record<Category, string> = {
   health: "🏥",
   entertainment: "🎉",
   subscription: "💳",
-  other: "❓",
+  other: "🤷",
 };
 
 export { CATEGORY_COLORS, EMOJI_BASED_ON_CATEGORY };
