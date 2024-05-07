@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 
 import { MoreVerticalIcon } from "@/app/icons/icons";
 import Badge from "../Badge";
@@ -7,18 +7,24 @@ import Badge from "../Badge";
 import { FILE_HEADERS } from "@/app/constants/file";
 import { CATEGORIES } from "@/app/constants/categories";
 
+import { Transaction } from "@/app/types/transaction";
 import { FileHeader } from "@/app/types/file";
 import { Category } from "@/app/types/categories";
 
 interface TableTransactionsProps {
-  transactions: any[];
+  transactions: Transaction[];
 }
 
 const TableTransactions = ({ transactions }: TableTransactionsProps) => {
+  const [renderedTransactions, setRenderedTransactions] = useState([...transactions]);
   const [headerSelected, setHeaderSelected] = useState<FileHeader | null>(null);
   const [sortOrder, setSortOrder] = useState("asc");
   const [categoryFilter, setCategoryFilter] = useState<Category[] | null>(null);
   const [openCategoryFilter, setOpenCategoryFilter] = useState(false);
+
+  useEffect(() => {
+    handleFilter();
+  }, [transactions]);
 
   const categoryCounts = useMemo(() => {
     return transactions.reduce((acc, transaction) => {
@@ -42,6 +48,39 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
     }
     setOpenCategoryFilter(false);
   };
+
+  const handleFilter = () => {
+    let filteredTransactions = transactions;
+    if (categoryFilter?.length !== 0) {
+      // not empty
+      filteredTransactions = transactions.filter((transaction: Transaction) =>
+        categoryFilter?.includes(transaction.category)
+      );
+    }
+
+    if (filteredTransactions.length === 0) {
+      filteredTransactions = transactions;
+    }
+    setRenderedTransactions(filteredTransactions);
+  };
+
+  const handleSortTransactions = useCallback(
+    (a: any, b: any) => {
+      if (headerSelected) {
+        // key: "category" -> no sort
+        if (headerSelected === "category") {
+          return 0;
+        }
+        if (sortOrder === "asc") {
+          return a[headerSelected] > b[headerSelected] ? 1 : -1;
+        } else {
+          return a[headerSelected] < b[headerSelected] ? 1 : -1;
+        }
+      }
+      return 0;
+    },
+    [headerSelected, sortOrder]
+  );
 
   return (
     <>
@@ -68,6 +107,8 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
               </button>
               <CategoryMultipleSelect
                 open={openCategoryFilter}
+                setOpenCategoryFilter={setOpenCategoryFilter}
+                handleFilter={handleFilter}
                 categoryCounts={categoryCounts}
                 categoryFilter={categoryFilter}
                 setCategoryFilter={setCategoryFilter}
@@ -87,7 +128,7 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
           </tr>
         </thead>
         <tbody className="[&_tr:last-child]:border-0">
-          {transactions.map((transaction, index) => (
+          {renderedTransactions.sort(handleSortTransactions).map((transaction, index) => (
             <tr key={index} className="text-gray-700 hover:bg-gray-50 border-b transition-colors">
               <td className="px-4 py-2">{transaction.date}</td>
               <td className="px-4 py-2">
@@ -113,6 +154,8 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
 
 interface CategoryMultipleSelectProps {
   open: boolean;
+  setOpenCategoryFilter: (open: boolean) => void;
+  handleFilter: () => void;
   categoryCounts: Record<Category, number>;
   categoryFilter: Category[] | null;
   setCategoryFilter: (category: Category[] | null) => void;
@@ -120,6 +163,8 @@ interface CategoryMultipleSelectProps {
 
 const CategoryMultipleSelect = ({
   open,
+  setOpenCategoryFilter,
+  handleFilter,
   categoryCounts,
   categoryFilter,
   setCategoryFilter,
@@ -157,7 +202,13 @@ const CategoryMultipleSelect = ({
         })}
       </ul>
       <div className="border-t border-gray-200 flex justify-center">
-        <button className="p-1 text-xs text-gray-400 hover:text-gray-50 hover:bg-blue-500 w-full transition-colors">
+        <button
+          onClick={() => {
+            handleFilter();
+            setOpenCategoryFilter(false);
+          }}
+          className="p-1 text-xs text-gray-400 hover:text-gray-50 hover:bg-blue-500 w-full transition-colors"
+        >
           Apply filters
         </button>
         <button

@@ -5,11 +5,13 @@ import NavigationMain from "./components/Navigation/NavigationMain";
 import DragAndDropFile from "./components/DragAndDropFile";
 import TableTransactions from "./components/Table/TableTransactions";
 
+import { Transaction } from "./types/transaction";
+
 import readExpectedFile from "./utils/expectedFile";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
-  const [transactions, setTransactions] = useState<any[]>([]); // Almacena los datos analizados del archivo CSV
+  const [transactions, setTransactions] = useState<Transaction[]>([]); // Almacena los datos analizados del archivo CSV
 
   useEffect(() => {
     const handleFile = async () => {
