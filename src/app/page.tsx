@@ -1,5 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
+
+import { toast } from "./components/ui/use-toast";
+
 import Header from "./components/Header/Header";
 import NavigationMain from "./components/Navigation/NavigationMain";
 import DragAndDropFile from "./components/DragAndDropFile";
@@ -18,10 +21,24 @@ export default function Home() {
       if (file) {
         try {
           const transactions = await readExpectedFile(file);
-          console.log(transactions);
           setTransactions(transactions);
         } catch (error) {
-          console.error(error);
+          if (error instanceof Error) {
+            toast({
+              title: "Error",
+              variant: "destructive",
+              description: error.message,
+              duration: 3500,
+            });
+          } else {
+            console.error("Error desconocido:", error);
+            toast({
+              title: "Error",
+              variant: "destructive",
+              description: "Ocurrió un error desconocido. Por favor, inténtalo de nuevo.",
+              duration: 3500,
+            });
+          }
         }
       }
     };
@@ -33,6 +50,7 @@ export default function Home() {
       <Header />
       <main className="flex min-h-screen">
         <NavigationMain />
+
         <div className="flex-1 p-6 h-full overflow-y-auto">
           <DragAndDropFile acceptedTypes={["csv", "txt"]} setFile={setFile} />
           <h1 className="pt-2 pb-4 text-lg">Transactions</h1>
