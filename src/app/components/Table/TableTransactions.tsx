@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 import { MoreVerticalIcon } from "@/app/icons/icons";
 import Badge from "../Badge";
@@ -20,13 +20,27 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
   const [categoryFilter, setCategoryFilter] = useState<Category[] | null>(null);
   const [openCategoryFilter, setOpenCategoryFilter] = useState(false);
 
+  const categoryCounts = useMemo(() => {
+    return transactions.reduce((acc, transaction) => {
+      const category = transaction.category;
+      acc[category] = (acc[category] || 0) + 1;
+      return acc;
+    }, {} as Record<Category, number>);
+  }, [transactions]);
+
   const handleSort = (key: FileHeader) => {
+    if (key === "category") {
+      setOpenCategoryFilter(!openCategoryFilter);
+      setHeaderSelected(key);
+      return;
+    }
     if (key === headerSelected) {
       setSortOrder(sortOrder === "asc" ? "desc" : "asc");
     } else {
       setHeaderSelected(key);
       setSortOrder("asc");
     }
+    setOpenCategoryFilter(false);
   };
 
   return (
@@ -52,13 +66,12 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
               <button onClick={() => handleSort("category")} className="flex items-center justify-between w-full">
                 <span className="capitalize">category</span>
               </button>
-              {headerSelected === "category" && (
-                <CategoryMultipleSelect
-                  transactions={transactions}
-                  categoryFilter={categoryFilter}
-                  setCategoryFilter={setCategoryFilter}
-                />
-              )}
+              <CategoryMultipleSelect
+                open={openCategoryFilter}
+                categoryCounts={categoryCounts}
+                categoryFilter={categoryFilter}
+                setCategoryFilter={setCategoryFilter}
+              />
             </th>
 
             <th className="h-12 px-4 py-2">
@@ -99,22 +112,24 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
 };
 
 interface CategoryMultipleSelectProps {
-  transactions: any[];
+  open: boolean;
+  categoryCounts: Record<Category, number>;
   categoryFilter: Category[] | null;
   setCategoryFilter: (category: Category[] | null) => void;
 }
 
-const CategoryMultipleSelect = ({ transactions, categoryFilter, setCategoryFilter }: CategoryMultipleSelectProps) => {
-  // Calculate the amount of transactions per category
-  const categoryCounts = transactions.reduce((acc, transaction) => {
-    const category = transaction.category;
-    acc[category] = (acc[category] || 0) + 1;
-    return acc;
-  }, {} as Record<Category, number>);
-  console.log(categoryCounts);
-
+const CategoryMultipleSelect = ({
+  open,
+  categoryCounts,
+  categoryFilter,
+  setCategoryFilter,
+}: CategoryMultipleSelectProps) => {
   return (
-    <div className="absolute z-10 min-w-min bg-white border border-gray-300 mt-1">
+    <div
+      className={`absolute z-10 min-w-min bg-white border border-gray-300 mt-1 overflow-hidden ease-in-out duration-150 ${
+        open ? "max-h-screen" : "max-h-0 border-0"
+      }`}
+    >
       <ul className="p-2 flex flex-wrap gap-1">
         {CATEGORIES.map((category) => {
           const handleCategoryFilter = () => {
@@ -134,19 +149,24 @@ const CategoryMultipleSelect = ({ transactions, categoryFilter, setCategoryFilte
               <Badge
                 key={category}
                 text={category}
-                className={isSelected ? "opacity-100" : "opacity-50 hover:opacity-100 transition-opacity"}
+                className={isSelected ? "opacity-90" : "opacity-40 hover:opacity-75 transition-opacity"}
                 quantity={categoryCounts[category]}
               />
             </button>
           );
         })}
       </ul>
-      <button
-        onClick={() => setCategoryFilter(null)}
-        className="p-1 text-xs text-gray-500 hover:text-gray-800 hover:bg-gray-100 w-full"
-      >
-        Clear filters
-      </button>
+      <div className="border-t border-gray-200 flex justify-center">
+        <button className="p-1 text-xs text-gray-400 hover:text-gray-50 hover:bg-blue-500 w-full transition-colors">
+          Apply filters
+        </button>
+        <button
+          onClick={() => setCategoryFilter(null)}
+          className="p-1 text-xs text-gray-400 hover:text-gray-600 hover:bg-gray-100 w-full"
+        >
+          Clear filters
+        </button>
+      </div>
     </div>
   );
 };
