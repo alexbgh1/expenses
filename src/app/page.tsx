@@ -36,7 +36,9 @@ export default function Home() {
             <DragAndDropFile acceptedTypes={["csv", "txt"]} setFile={setFile} />
           </div>
           <h1 className="pt-2 pb-4 text-lg">Transactions</h1>
-          <TableTransactions transactions={transactions} />
+          <div className="overflow-x-auto">
+            <TableTransactions transactions={transactions} />
+          </div>
         </div>
       </main>
     </>

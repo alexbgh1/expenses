@@ -41,4 +41,6 @@ const EMOJI_BASED_ON_CATEGORY: Record<Category, string> = {
   other: "🤷",
 };
 
-export { CATEGORY_COLORS, EMOJI_BASED_ON_CATEGORY };
+const CATEGORIES = Object.keys(CATEGORY_COLORS) as Category[];
+
+export { CATEGORIES, CATEGORY_COLORS, EMOJI_BASED_ON_CATEGORY };
