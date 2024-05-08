@@ -2,8 +2,7 @@ import { resolveEmojiCategory } from "../utils/resolveEmojiCategory";
 
 import { FILE_HEADERS, MAX_COLS, DESCRIPTION_MAX_LENGTH, CATEGORY_MAX_LENGTH } from "../constants/file";
 
-import { Category } from "../types/categories";
-import { FileHeader } from "../types/file";
+import { Category, FileHeader, Transaction } from "../types";
 
 const checkHeaders = (headers: string[]): boolean => {
   const expectedHeaders = FILE_HEADERS;
@@ -46,19 +45,28 @@ const readExpectedFile = (file: File): Promise<any[]> => {
         const data = result.split("\n").map((line: string) => line.split(";"));
 
         // [ERROR] data is empty
-        if (data.length === 0) reject(new Error("El archivo CSV está vacío."));
+        if (data.length === 0) {
+          reject(new Error("El archivo CSV está vacío."));
+          return;
+        }
 
         const headers: FileHeader[] = data[0].map((header: string) => header.toLowerCase().trim() as FileHeader);
         const isValidHeaders = checkHeaders(headers);
 
         // [ERROR] headers are invalid
-        if (!isValidHeaders) reject(new Error("El archivo CSV no tiene las cabeceras esperadas."));
+        if (!isValidHeaders) {
+          reject(new Error("El archivo CSV no tiene las cabeceras esperadas."));
+          return;
+        }
 
         // [ERROR] data has invalid format (not all lines have the same number of columns)
         const isValidFormat = data.every((line) => line.length === MAX_COLS);
-        if (!isValidFormat) reject(new Error("El archivo CSV no tiene el formato esperado."));
+        if (!isValidFormat) {
+          reject(new Error("El archivo CSV no tiene el formato esperado."));
+          return;
+        }
 
-        const transactions = data.slice(1).map((line: string[], idx) => {
+        const transactions = data.slice(1).map((line: string[], idx): Transaction => {
           line = line.map((field) => field.trim());
           const [date, description, category, price] = line;
 
@@ -85,6 +93,7 @@ const readExpectedFile = (file: File): Promise<any[]> => {
 
     reader.onerror = (event) => {
       reject(new Error("Error al leer el archivo."));
+      return;
     };
 
     reader.readAsText(file);
