@@ -1,0 +1,41 @@
+Date;Description;Category;Price
+2024-05-01;Compra de cortinas;Home;500.0
+2024-05-05;Pago de alquiler;Home;800
+2024-05-08;Compra de muebles;Home;300
+2024-05-02;Cena en restaurante italiano;Food;40
+2024-05-04;Compra en el supermercado;Food;70
+2024-05-07;Almuerzo en el trabajo;Food;15
+2024-05-03;Recarga de tarjeta de transporte público;Transport;20
+2024-05-06;Gasolina para el coche;Transport;45
+2024-05-09;Viaje en taxi al aeropuerto;Transport;35
+2024-05-01;Compra de comida para el perro;Pet;25
+2024-05-05;Consulta veterinaria;Pet;80
+2024-05-08;Juguetes para gato;Pet;15
+2024-05-02;Compra de material de oficina;Work;50
+2024-05-04;Pago de suscripción a software;Work;100
+2024-05-07;Almuerzo con compañeros de trabajo;Work;30
+2024-05-03;Pago de matrícula universitaria;Education;500
+2024-05-06;Compra de libros de texto;Education;120
+2024-05-09;Curso de idiomas online;Education;80
+2024-05-01;Consulta médica;Health;60
+2024-05-05;Compra de medicamentos;Health;35
+2024-05-08;Gimnasio;Health;40
+2024-05-02;Entradas de cine;Entertainment;25
+2024-05-04;Suscripción a plataforma de streaming;Entertainment;15
+2024-05-07;Concierto;Entertainment;70
+2024-05-03;Pago de suscripción a revista;Subscription;10
+2024-05-06;Suscripción a servicio de música;Subscription;8
+2024-05-09;Pago de membresía de gimnasio;Subscription;50
+2024-05-01;Compra de regalo;Other;30
+2024-05-05;Reparación de electrodoméstico;Other;90
+2024-05-08;Gastos varios;Other;20
+2024-05-02;Compra de plantas para el jardín;Home;45
+2024-05-04;Cena en restaurante de comida rápida;Food;15
+2024-05-06;Recarga de tarjeta de telefonía móvil;Other;25
+2024-05-01;Gasolina para la cortadora de césped;Other;20
+2024-05-05;Pago de tarifa de estacionamiento;Transport;10
+2024-05-08;Consulta con nutricionista;Health;75
+2024-05-03;Compra de boletos de lotería;Entertainment;5
+2024-05-07;Suscripción a revista digital;Subscription;7
+2024-05-09;Compra de material escolar;Education;25
+2024-05-02;Pago de factura de luz;Other;60
