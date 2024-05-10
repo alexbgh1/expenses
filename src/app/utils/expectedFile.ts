@@ -79,7 +79,8 @@ const readExpectedFile = (file: File): Promise<any[]> => {
 
           return headers.reduce(
             (acc: any, header, index) => {
-              acc[header] = line[index].toLowerCase();
+              if (header === "price") acc[header] = parseFloat(line[index]);
+              else acc[header] = line[index].toLowerCase();
               return acc;
             },
             {
