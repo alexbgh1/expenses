@@ -1,11 +1,10 @@
 import { useEffect, useState, useMemo } from "react";
 
 import CategoryMultipleSelect from "./CategoryMultipleSelect";
+import ArrowSort from "./ArrowSort";
+import { FilterIcon } from "@/app/icons/icons";
 
-import { Transaction } from "@/app/types/transaction";
-import { FileHeader } from "@/app/types/file";
-import { Category } from "@/app/types/categories";
-import { SortOrder } from "@/app/types/sort";
+import { Transaction, Category, FileHeader, SortOrder } from "@/app/types";
 
 interface TableHeaderTransactionProps {
   transactions: Transaction[];
@@ -54,13 +53,6 @@ const TableHeaderTransaction = ({
   }, [transactions]);
 
   const handleSort = (key: FileHeader) => {
-    // Open category filter
-    if (key === "category") {
-      setOpenCategoryFilter(!openCategoryFilter);
-      setHeaderSelected(key);
-      return;
-    }
-
     // Sort transactions
     if (key === headerSelected) {
       setSortOrder(sortOrder === "asc" ? "desc" : "asc");
@@ -71,27 +63,49 @@ const TableHeaderTransaction = ({
     setOpenCategoryFilter(false);
   };
 
+  //TODO: Refactor and try to improve redundancy
   return (
     <thead className="text-xs font-light hover:bg-gray-50">
       <tr className="border-b transition-colors">
         <th className="h-12 px-4 py-2">
           <button onClick={() => handleSort("date")} className="flex items-center justify-between w-full">
             <span className="capitalize">date</span>
-            {headerSelected === "date" && <span className="text-xs">{sortOrder === "asc" ? "▲" : "▼"}</span>}
+            {headerSelected === "date" && (
+              <span className="text-xs">
+                <ArrowSort type="string" sortOrder={sortOrder} />
+              </span>
+            )}
           </button>
         </th>
 
         <th className="h-12 px-4 py-2">
           <button onClick={() => handleSort("description")} className="flex items-center justify-between w-full">
             <span className="capitalize">description</span>
-            {headerSelected === "description" && <span className="text-xs">{sortOrder === "asc" ? "▲" : "▼"}</span>}
+            {headerSelected === "description" && (
+              <span className="text-xs">
+                <ArrowSort type="string" sortOrder={sortOrder} />
+              </span>
+            )}
           </button>
         </th>
 
         <th className="relative h-12 px-4 py-2">
-          <button onClick={() => handleSort("category")} className="flex items-center justify-between w-full">
-            <span className="capitalize">category</span>
-          </button>
+          <div className="flex items-center justify-between w-full">
+            <button onClick={() => handleSort("category")} className="flex items-center justify-between w-full">
+              <span className="capitalize">category</span>
+              {headerSelected === "category" && (
+                <span className="text-xs">
+                  <ArrowSort type="string" sortOrder={sortOrder} />
+                </span>
+              )}
+            </button>
+            <button
+              className="px-1 py-2 hover:bg-gray-200 [&>svg]:hover:fill-gray-600"
+              onClick={() => setOpenCategoryFilter(!openCategoryFilter)}
+            >
+              <FilterIcon className="w-3 h-3 fill-gray-500" />
+            </button>
+          </div>
           <CategoryMultipleSelect
             open={openCategoryFilter}
             setOpenCategoryFilter={setOpenCategoryFilter}
@@ -105,7 +119,11 @@ const TableHeaderTransaction = ({
         <th className="h-12 px-4 py-2">
           <button onClick={() => handleSort("price")} className="flex items-center justify-between w-full">
             <span className="capitalize">price</span>
-            {headerSelected === "price" && <span className="text-xs">{sortOrder === "asc" ? "▲" : "▼"}</span>}
+            {headerSelected === "price" && (
+              <span className="text-xs">
+                <ArrowSort type="number" sortOrder={sortOrder} />
+              </span>
+            )}
           </button>
         </th>
 

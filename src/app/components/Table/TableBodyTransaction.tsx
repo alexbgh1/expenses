@@ -15,10 +15,6 @@ const TableBodyTransaction = ({ renderedTransactions, headerSelected, sortOrder 
   const handleSortTransactions = useCallback(
     (a: any, b: any) => {
       if (headerSelected) {
-        // key: "category" -> no sort
-        if (headerSelected === "category") {
-          return 0;
-        }
         if (sortOrder === "asc") {
           return a[headerSelected] > b[headerSelected] ? 1 : -1;
         } else {
