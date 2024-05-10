@@ -29,7 +29,7 @@ const checkRow = (row: string[], idx: number) => {
     return `Linea: ${idx + 1}\nLa categoría excede el límite de caracteres. ${category.length}/${CATEGORY_MAX_LENGTH}`;
 
   // check amount is number and has max length
-  const priceRegex = /^\d{1,7}?/;
+  const priceRegex = /^\d{1,7}$/;
   if (!priceRegex.test(price))
     return `Linea: ${idx + 1}\nEl precio ${price} no tiene el formato esperado. Máximo 7 dígitos.`;
 

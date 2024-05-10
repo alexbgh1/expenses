@@ -22,6 +22,12 @@ export default function Home() {
         try {
           const transactions = await readExpectedFile(file);
           setTransactions(transactions);
+          toast({
+            title: "Archivo cargado",
+            variant: "success",
+            description: "El archivo se cargó correctamente.",
+            duration: 3500,
+          });
         } catch (error) {
           if (error instanceof Error) {
             toast({
