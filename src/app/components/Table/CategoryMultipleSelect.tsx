@@ -1,6 +1,6 @@
 import Badge from "../Badge";
 
-import { CATEGORIES } from "@/app/constants/categories";
+import { CATEGORIES_SORTED_OTHER_LAST } from "@/app/constants/categories";
 
 import { Category } from "@/app/types/categories";
 
@@ -38,9 +38,8 @@ const CategoryMultipleSelect = ({
       }`}
     >
       <ul className="p-2 flex flex-wrap gap-1">
-        {CATEGORIES.map((category) => {
+        {CATEGORIES_SORTED_OTHER_LAST.map((category) => {
           const isSelected = categoryFilter?.includes(category);
-
           return (
             <button key={category} onClick={() => handleCategoryFilter(category)}>
               <Badge
