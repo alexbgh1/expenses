@@ -3,7 +3,9 @@ import { Category, CategoryColors } from "../types/categories";
 //TODO: Improve colors and add more categories
 //found this: https://flowbite.com/docs/components/badge/
 const CATEGORY_COLORS: Record<Category, CategoryColors> = {
-  home: { className: "bg-gray-200 text-gray-800 text-xs font-medium rounded-full dark:bg-gray-700 dark:text-gray-300" },
+  home: {
+    className: "bg-stone-200 text-stone-800 text-xs font-medium rounded-full dark:bg-stone-700 dark:text-stone-300",
+  },
   food: { className: "bg-yellow-100 text-yellow-800 text-xs font-medium dark:bg-yellow-900 dark:text-yellow-300" },
   transport: {
     className: "bg-purple-100 text-purple-800 text-xs font-medium rounded-full dark:bg-purple-900 dark:text-purple-300",
@@ -24,7 +26,7 @@ const CATEGORY_COLORS: Record<Category, CategoryColors> = {
     className: "bg-cyan-100 text-cyan-800 text-xs font-medium rounded-full dark:bg-cyan-900 dark:text-cyan-300",
   },
   other: {
-    className: "bg-gray-100 text-gray-800 text-xs font-medium rounded-full dark:bg-gray-900 dark:text-gray-300",
+    className: "bg-gray-200 text-gray-800 text-xs font-medium rounded-full dark:bg-gray-950 dark:text-gray-300",
   },
 };
 

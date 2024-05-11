@@ -45,14 +45,18 @@ const CategoryMultipleSelect = ({
               <Badge
                 key={category}
                 text={category}
-                className={isSelected ? "opacity-90" : "opacity-40 hover:opacity-75 transition-opacity"}
+                className={
+                  isSelected
+                    ? "opacity-90"
+                    : "opacity-45 dark:opacity-40 dark:hover:opacity-75 hover:opacity-70 transition-opacity"
+                }
                 quantity={categoryCounts[category]}
               />
             </button>
           );
         })}
       </ul>
-      <div className="border-t border-gray-200 flex justify-center">
+      <div className="border-t dark:border-zinc-600 border-gray-200 flex justify-center">
         <button
           onClick={() => {
             handleFilter();
