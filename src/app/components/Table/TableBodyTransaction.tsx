@@ -29,7 +29,10 @@ const TableBodyTransaction = ({ renderedTransactions, headerSelected, sortOrder 
   return (
     <tbody className="[&_tr:last-child]:border-0">
       {renderedTransactions.sort(handleSortTransactions).map((transaction, index) => (
-        <tr key={index} className="text-gray-700 hover:bg-gray-50 border-b transition-colors">
+        <tr
+          key={index}
+          className="text-gray-700 dark:text-zinc-400 dark:hover:bg-zinc-900 hover:bg-gray-50 dark:border-zinc-600 border-b transition-colors"
+        >
           <td className="px-4 py-2">{transaction.date}</td>
           <td className="px-4 py-2">
             {transaction.description.charAt(0).toUpperCase() + transaction.description.slice(1)}
@@ -39,7 +42,7 @@ const TableBodyTransaction = ({ renderedTransactions, headerSelected, sortOrder 
           </td>
           <td className="text-right px-4 py-2">{transaction.price}</td>
           <td className="px-4 py-2">
-            <button className="relative hover:text-gray-800 hover:bg-gray-200 py-2 px-1">
+            <button className="relative hover:text-gray-800 dark:text-gray-300 dark:hover:bg-zinc-800 hover:bg-gray-200 py-2 px-1">
               <MoreVerticalIcon className="w-4 h-4" />
               <span className="sr-only">Edit</span>
             </button>

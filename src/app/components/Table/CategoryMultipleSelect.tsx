@@ -21,28 +21,28 @@ const CategoryMultipleSelect = ({
   categoryFilter,
   setCategoryFilter,
 }: CategoryMultipleSelectProps) => {
+  const handleCategoryFilter = (category: Category) => {
+    if (categoryFilter?.includes(category)) {
+      // Remove category from filter
+      setCategoryFilter(categoryFilter.filter((cat) => cat !== category));
+    } else {
+      // Add category to filter
+      setCategoryFilter([...(categoryFilter || []), category]);
+    }
+  };
+
   return (
     <div
-      className={`absolute z-10 min-w-min bg-white border border-gray-300 mt-1 overflow-hidden ease-in-out duration-150 ${
+      className={`absolute z-10 min-w-min dark:bg-zinc-900 bg-white border dark:border-zinc-600 border-gray-300 mt-1 overflow-hidden ease-in-out duration-150 ${
         open ? "max-h-screen" : "max-h-0 border-0"
       }`}
     >
       <ul className="p-2 flex flex-wrap gap-1">
         {CATEGORIES.map((category) => {
-          const handleCategoryFilter = () => {
-            if (categoryFilter?.includes(category)) {
-              // Remove category from filter
-              setCategoryFilter(categoryFilter.filter((cat) => cat !== category));
-            } else {
-              // Add category to filter
-              setCategoryFilter([...(categoryFilter || []), category]);
-            }
-          };
-
           const isSelected = categoryFilter?.includes(category);
 
           return (
-            <button key={category} onClick={handleCategoryFilter}>
+            <button key={category} onClick={() => handleCategoryFilter(category)}>
               <Badge
                 key={category}
                 text={category}
@@ -59,13 +59,13 @@ const CategoryMultipleSelect = ({
             handleFilter();
             setOpenCategoryFilter(false);
           }}
-          className="p-1 text-xs text-gray-400 hover:text-gray-50 hover:bg-blue-500 w-full transition-colors"
+          className="p-1 text-xs text-gray-400 dark:text-zinc-400 dark:hover:text-zinc-300 hover:text-gray-50 dark:hover:bg-blue-950 hover:bg-blue-500 w-full transition-colors"
         >
           Apply filters
         </button>
         <button
           onClick={() => setCategoryFilter(null)}
-          className="p-1 text-xs text-gray-400 hover:text-gray-600 hover:bg-gray-100 w-full"
+          className="p-1 text-xs dark:text-zinc-400 text-gray-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-300 hover:text-gray-600 hover:bg-gray-100 w-full"
         >
           Clear filters
         </button>

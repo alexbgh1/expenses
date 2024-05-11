@@ -26,7 +26,7 @@ const DragAndDropFile = ({ acceptedTypes, setFile }: DragAndDropFileProps) => {
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       className={`flex flex-col border-2 relative border-dashed rounded-md text-center ${
-        draggingOver ? "border-blue-500" : "border-gray-300"
+        draggingOver ? "dark:border-blue-600 border-blue-500" : "border-gray-300 dark:border-zinc-600"
       }`}
     >
       <label className="w-full h-full py-8" htmlFor={id}>

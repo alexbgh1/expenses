@@ -11,7 +11,7 @@ const MenuHeader: React.FC<MenuHeaderProps> = ({ handleOpen }) => {
       <div className="flex items-center gap-2">
         {handleOpen && (
           <button className="absolute right-0 pr-4" onClick={handleOpen}>
-            <XIcon className="w-6 h-6 " />
+            <XIcon className="w-6 h-6 hover:dark:fill-zinc-600 dark:fill-zinc-700" />
             <span className="sr-only">Close Menu</span>
           </button>
         )}

@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="flex min-h-screen">
+      <main className="text-black dark:bg-zinc-90 dark:text-white flex min-h-screen">
         <NavigationMain />
 
         <div className="flex-1 p-6 h-full overflow-y-auto">

@@ -18,7 +18,7 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
 
   return (
     <>
-      <table className="min-w-full w-auto min-h-96 table-fixed text-sm text-left rtl:text-right text-gray-500">
+      <table className="min-w-full w-auto min-h-96 table-fixed text-sm text-left rtl:text-right text-gray-500 dark:text-zinc-300">
         <TableHeaderTransaction
           sortOrder={sortOrder}
           setSortOrder={setSortOrder}

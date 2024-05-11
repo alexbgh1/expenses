@@ -17,10 +17,10 @@ const ArrowSort = ({ type, sortOrder, className }: ArrowSortProps) => {
   switch (type) {
     case "string":
       if (sortOrder === "asc") return <ArrowDownAZIcon className={cn("w-4 h-4 fill-gray-500", className)} />;
-      return <ArrowUpZAIcon className="w-4 h-4 fill-gray-500" />;
+      return <ArrowUpZAIcon className={cn("w-4 h-4 fill-gray-500", className)} />;
     case "number":
       if (sortOrder === "asc") return <ArrowDownShortWide className={cn("w-4 h-4 fill-gray-500", className)} />;
-      return <ArrowUpWideShortIcon className="w-4 h-4 fill-gray-500" />;
+      return <ArrowUpWideShortIcon className={cn("w-4 h-4 fill-gray-500", className)} />;
   }
 };
 

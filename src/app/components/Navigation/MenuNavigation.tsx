@@ -22,9 +22,9 @@ const MenuNavigation = () => {
             href={route.href}
             Icon={route.Icon}
             className={`${
-              isActive(route.href) ? "bg-gray-200" : "text-gray-500"
-            } hover:bg-gray-200 p-2 rounded-lg w-full flex items-center gap-4  active:bg-gray-300`}
-            classNameIcon={`${isActive(route.href) ? "text-gray-800" : "text-gray-500"}`}
+              isActive(route.href) ? "bg-gray-200 dark:bg-zinc-900" : "text-gray-500 dark:text-zinc-500"
+            } dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:active:bg-zinc-800 hover:bg-gray-200 p-2 rounded-lg w-full flex items-center gap-4  active:bg-gray-300`}
+            classNameIcon={`${isActive(route.href) ? "text-zinc-400" : "text-gray-600 dark:text-zinc-700"}`}
           >
             {route.label}
           </MenuNavigationItem>

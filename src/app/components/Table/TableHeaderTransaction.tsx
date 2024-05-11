@@ -65,14 +65,14 @@ const TableHeaderTransaction = ({
 
   //TODO: Refactor and try to improve redundancy
   return (
-    <thead className="text-xs font-light hover:bg-gray-50">
+    <thead className="text-xs font-light hover:bg-gray-50 dark:hover:bg-zinc-900">
       <tr className="border-b transition-colors">
         <th className="h-12 px-4 py-2">
           <button onClick={() => handleSort("date")} className="flex items-center justify-between w-full">
             <span className="capitalize">date</span>
             {headerSelected === "date" && (
               <span className="text-xs">
-                <ArrowSort type="string" sortOrder={sortOrder} />
+                <ArrowSort type="string" sortOrder={sortOrder} className="dark:fill-zinc-300" />
               </span>
             )}
           </button>
@@ -83,7 +83,7 @@ const TableHeaderTransaction = ({
             <span className="capitalize">description</span>
             {headerSelected === "description" && (
               <span className="text-xs">
-                <ArrowSort type="string" sortOrder={sortOrder} />
+                <ArrowSort type="string" sortOrder={sortOrder} className="dark:fill-zinc-300" />
               </span>
             )}
           </button>
@@ -95,15 +95,15 @@ const TableHeaderTransaction = ({
               <span className="capitalize">category</span>
               {headerSelected === "category" && (
                 <span className="text-xs">
-                  <ArrowSort type="string" sortOrder={sortOrder} />
+                  <ArrowSort type="string" sortOrder={sortOrder} className="dark:fill-zinc-300" />
                 </span>
               )}
             </button>
             <button
-              className="px-1 py-2 hover:bg-gray-200 [&>svg]:hover:fill-gray-600"
+              className="px-1 py-2 dark:hover:bg-zinc-800 hover:bg-gray-200 [&>svg]:hover:fill-gray-600 dark:[&>svg]:hover:fill-zinc-300"
               onClick={() => setOpenCategoryFilter(!openCategoryFilter)}
             >
-              <FilterIcon className="w-3 h-3 fill-gray-500" />
+              <FilterIcon className="w-3 h-3 fill-gray-500 dark:fill-zinc-400" />
             </button>
           </div>
           <CategoryMultipleSelect
@@ -121,7 +121,7 @@ const TableHeaderTransaction = ({
             <span className="capitalize">price</span>
             {headerSelected === "price" && (
               <span className="text-xs">
-                <ArrowSort type="number" sortOrder={sortOrder} />
+                <ArrowSort type="number" sortOrder={sortOrder} className="dark:fill-zinc-300" />
               </span>
             )}
           </button>
