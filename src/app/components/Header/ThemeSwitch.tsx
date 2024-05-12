@@ -1,13 +1,17 @@
 "use client";
+import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { LightbulbONIcon, LightbulbOFFIcon } from "@/app/icons/theme";
+
 const ThemeSwitch = () => {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
   const handleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
-  //TODO: Improve switch theme
+  useEffect(() => setMounted(true), []);
   return (
     <>
       <button
@@ -16,17 +20,22 @@ const ThemeSwitch = () => {
          dark:bg-blue-950 dark:hover:bg-blue-900"
         onClick={() => handleTheme()}
       >
-        <ThemeIcon />
+        {mounted ? <ThemeIcon /> : <ThemeSkeleton />}
       </button>
     </>
   );
 };
 
 const ThemeIcon = () => {
-  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) null;
+
+  const { resolvedTheme } = useTheme();
+
   return (
     <>
-      {theme === "dark" ? (
+      {resolvedTheme === "dark" ? (
         <>
           <span className="sr-only">Switch to light mode</span>
           <LightbulbOFFIcon className="w-4 h-4 fill-yellow-300 dark:fill-white" />
@@ -37,6 +46,15 @@ const ThemeIcon = () => {
           <LightbulbONIcon className="w-4 h-4 fill-yellow-300 dark:fill-blue-950" />
         </>
       )}
+    </>
+  );
+};
+
+const ThemeSkeleton = () => {
+  return (
+    <>
+      <span className="sr-only">Switch to light mode</span>
+      <LightbulbOFFIcon className="w-4 h-4 fill-zinc-100 dark:fill-zinc-300" />
     </>
   );
 };
