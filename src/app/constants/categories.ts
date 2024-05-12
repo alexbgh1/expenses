@@ -50,6 +50,5 @@ const CATEGORIES_SORTED_OTHER_LAST = [...CATEGORIES]
   .sort((a, b) => a.length - b.length)
   .filter((category) => category !== "other")
   .concat("other");
-console.log(CATEGORIES_SORTED_OTHER_LAST);
 
 export { CATEGORIES, CATEGORIES_SORTED_OTHER_LAST, CATEGORY_COLORS, EMOJI_BASED_ON_CATEGORY };

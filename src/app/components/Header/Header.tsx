@@ -1,5 +1,5 @@
 import NavigationMobile from "../Navigation/NavigationMobile";
-import SimpleSwitch from "./SimpleSwitch";
+import SimpleSwitch from "./ThemeSwitch";
 
 const Header = () => {
   return (
