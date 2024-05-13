@@ -1,19 +1,18 @@
 "use client";
 import { useState } from "react";
+import { useOrder } from "../../hooks/useOrder";
 
-import TableHeaderTransaction from "./TableHeaderTransaction";
+import TableHeaderTransaction from "./TableHeader/TableHeaderTransaction";
 import TableBodyTransaction from "./TableBodyTransaction";
 
-import { Transaction, FileHeader, SortOrder } from "@/app/types";
+import { Transaction } from "@/app/types";
 
 interface TableTransactionsProps {
   transactions: Transaction[];
 }
 
 const TableTransactions = ({ transactions }: TableTransactionsProps) => {
-  const [headerSelected, setHeaderSelected] = useState<FileHeader | null>(null);
-  const [sortOrder, setSortOrder] = useState<SortOrder>("asc");
-
+  const { sortOrder, headerSelected, handleSort, handleSortTransactions } = useOrder();
   const [renderedTransactions, setRenderedTransactions] = useState([...transactions]);
 
   return (
@@ -21,16 +20,14 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
       <table className="min-w-full w-auto min-h-96 table-fixed text-sm text-left rtl:text-right text-gray-500 dark:text-zinc-300">
         <TableHeaderTransaction
           sortOrder={sortOrder}
-          setSortOrder={setSortOrder}
+          handleSort={handleSort}
           headerSelected={headerSelected}
-          setHeaderSelected={setHeaderSelected}
           transactions={transactions}
           setRenderedTransactions={setRenderedTransactions}
         />
         <TableBodyTransaction
           renderedTransactions={renderedTransactions}
-          headerSelected={headerSelected}
-          sortOrder={sortOrder}
+          handleSortTransactions={handleSortTransactions}
         />
       </table>
     </>

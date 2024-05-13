@@ -1,4 +1,4 @@
-import { formatBytes } from "./formatNumber";
+import { formatBytes } from "../formatNumber";
 
 const validationFile = (file: File, acceptedTypes: string[]) => {
   /*

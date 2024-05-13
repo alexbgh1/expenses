@@ -10,7 +10,7 @@ import TableTransactions from "./components/Table/TableTransactions";
 
 import { Transaction } from "./types/transaction";
 
-import readExpectedFile from "./utils/expectedFile";
+import readExpectedFile from "./utils/File/expectedFile";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);

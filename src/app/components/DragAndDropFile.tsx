@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useId } from "react";
 import useDragAndDropFile from "../hooks/useDragAndDropFile";
-import { acceptanceTypesPlain } from "../utils/validationFile";
+import { acceptanceTypesPlain } from "../utils/File/validationFile";
 
 interface DragAndDropFileProps {
   setFile: (file: File | null) => void;

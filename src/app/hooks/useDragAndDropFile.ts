@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { handleFile } from "../utils/validationFile";
+import { handleFile } from "../utils/File/validationFile";
 
 const useDragAndDropFile = (acceptedTypes: string[], maxFileSize: number = 2097152) => {
   const [file, setFile] = useState<File | null>(null);

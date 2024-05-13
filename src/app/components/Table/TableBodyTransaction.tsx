@@ -1,31 +1,14 @@
-import { useCallback } from "react";
-
 import { MoreVerticalIcon } from "@/app/icons/icons";
 import Badge from "../Badge";
 
-import { Transaction, FileHeader, SortOrder } from "@/app/types";
+import { Transaction } from "@/app/types";
 
 interface TablebodyTransactionProps {
   renderedTransactions: Transaction[];
-  headerSelected: FileHeader | null;
-  sortOrder: SortOrder;
+  handleSortTransactions: (a: any, b: any) => number;
 }
 
-const TableBodyTransaction = ({ renderedTransactions, headerSelected, sortOrder }: TablebodyTransactionProps) => {
-  const handleSortTransactions = useCallback(
-    (a: any, b: any) => {
-      if (headerSelected) {
-        if (sortOrder === "asc") {
-          return a[headerSelected] > b[headerSelected] ? 1 : -1;
-        } else {
-          return a[headerSelected] < b[headerSelected] ? 1 : -1;
-        }
-      }
-      return 0;
-    },
-    [headerSelected, sortOrder]
-  );
-
+const TableBodyTransaction = ({ renderedTransactions, handleSortTransactions }: TablebodyTransactionProps) => {
   return (
     <tbody className="[&_tr:last-child]:border-0">
       {renderedTransactions.sort(handleSortTransactions).map((transaction, index) => (

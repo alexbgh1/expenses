@@ -1,8 +1,8 @@
-import { resolveEmojiCategory } from "../utils/resolveEmojiCategory";
+import { resolveEmojiCategory } from "../Category/resolveEmojiCategory";
 
-import { FILE_HEADERS, MAX_COLS, DESCRIPTION_MAX_LENGTH, CATEGORY_MAX_LENGTH } from "../constants/file";
+import { FILE_HEADERS, MAX_COLS, DESCRIPTION_MAX_LENGTH, CATEGORY_MAX_LENGTH } from "../../constants/file";
 
-import { Category, FileHeader, Transaction } from "../types";
+import { Category, FileHeader, Transaction } from "../../types";
 
 const checkHeaders = (headers: string[]): boolean => {
   const expectedHeaders = FILE_HEADERS;
