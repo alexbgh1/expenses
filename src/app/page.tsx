@@ -1,16 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { toast } from "./components/ui/use-toast";
+import { toast } from "../components/ui/use-toast";
 
-import Header from "./components/Header/Header";
-import NavigationMain from "./components/Navigation/NavigationMain";
-import DragAndDropFile from "./components/DragAndDropFile";
-import TableTransactions from "./components/Table/TableTransactions";
+import Header from "../components/Header/Header";
+import NavigationMain from "../components/Navigation/NavigationMain";
+import DragAndDropFile from "../components/DragAndDropFile";
+import TableTransactions from "../components/Table/TableTransactions";
 
-import { Transaction } from "./types/transaction";
+import { Transaction } from "@/types/transactions";
 
-import readExpectedFile from "./utils/File/expectedFile";
+import readExpectedFile from "../utils/File/expectedFile";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
