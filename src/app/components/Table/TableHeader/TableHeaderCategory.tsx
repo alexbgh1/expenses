@@ -17,6 +17,7 @@ const TableHeaderCategory = ({
   sortOrder,
   openCategoryFilter,
   setRenderedTransactions,
+  isHeaderSelected,
 }: TableHeaderCategoryProps) => {
   const [categoryFilter, setCategoryFilter] = useState<Category[] | null>(null);
   const categoryCounts = countEachCategory(transactions);
@@ -31,19 +32,21 @@ const TableHeaderCategory = ({
   };
 
   return (
-    <th className="relative h-12 px-4 py-2">
+    <th className="relative">
       <div className="flex items-center justify-between w-full">
         <button
           onClick={() => {
             handleSort("category");
             setOpenCategoryFilter(false);
           }}
-          className="flex items-center justify-between w-full"
+          className="h-12 px-4 py-2 flex items-center justify-between w-full"
         >
           <span className="capitalize">category</span>
-          <span className="text-xs">
-            <ArrowSort type="string" sortOrder={sortOrder} className="dark:fill-zinc-300" />
-          </span>
+          {isHeaderSelected && (
+            <span className="text-xs">
+              <ArrowSort type="string" sortOrder={sortOrder} className="dark:fill-zinc-300" />
+            </span>
+          )}
         </button>
         <button
           className="px-1 py-2 dark:hover:bg-zinc-800 hover:bg-gray-200 [&>svg]:hover:fill-gray-600 dark:[&>svg]:hover:fill-zinc-300"

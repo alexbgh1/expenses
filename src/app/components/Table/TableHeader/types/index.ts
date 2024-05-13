@@ -22,7 +22,7 @@ interface TableHeaderCategoryProps {
   handleSort: (key: FileHeader) => void;
   setOpenCategoryFilter: (open: boolean) => void;
   sortOrder: SortOrder;
-  headerSelected: FileHeader | null;
+  isHeaderSelected: boolean;
   openCategoryFilter: boolean;
   setRenderedTransactions: (transactions: Transaction[]) => void;
 }

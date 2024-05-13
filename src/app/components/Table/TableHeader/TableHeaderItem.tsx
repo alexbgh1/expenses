@@ -26,19 +26,19 @@ const TableHeaderItem = ({
         setOpenCategoryFilter={setOpenCategoryFilter}
         sortOrder={sortOrder}
         openCategoryFilter={openCategoryFilter}
-        headerSelected={header}
+        isHeaderSelected={isHeaderSelected}
       />
     );
   }
 
   return (
-    <th className="h-12 px-4 py-2">
+    <th>
       <button
         onClick={() => {
           handleSort(header);
           setOpenCategoryFilter(false);
         }}
-        className="flex items-center justify-between w-full"
+        className="h-12 px-4 py-2 flex items-center justify-between w-full"
       >
         <span className="capitalize">{header}</span>
         {isHeaderSelected && (
