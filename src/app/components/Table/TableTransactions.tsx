@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useOrder } from "../../hooks/useOrder";
 
 import TableHeaderTransaction from "./TableHeader/TableHeaderTransaction";
@@ -13,10 +13,33 @@ interface TableTransactionsProps {
 
 const TableTransactions = ({ transactions }: TableTransactionsProps) => {
   const { sortOrder, headerSelected, handleSort, handleSortTransactions } = useOrder();
-  const [renderedTransactions, setRenderedTransactions] = useState([...transactions]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 10;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+  const [renderedTransactions, setRenderedTransactions] = useState([...transactions.sort(handleSortTransactions)]);
+  const currentTransactions = renderedTransactions.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <>
+      <div className="flex justify-end items-center space-x-4">
+        <button
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+          disabled={currentPage === 1}
+          className="disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Previous
+        </button>
+        <button
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+          disabled={renderedTransactions.length < itemsPerPage}
+          className="disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Next
+        </button>
+      </div>
       <table className="min-w-full w-auto min-h-96 table-fixed text-sm text-left rtl:text-right text-gray-500 dark:text-zinc-300">
         <TableHeaderTransaction
           sortOrder={sortOrder}
@@ -25,10 +48,7 @@ const TableTransactions = ({ transactions }: TableTransactionsProps) => {
           transactions={transactions}
           setRenderedTransactions={setRenderedTransactions}
         />
-        <TableBodyTransaction
-          renderedTransactions={renderedTransactions}
-          handleSortTransactions={handleSortTransactions}
-        />
+        <TableBodyTransaction currentTransactions={currentTransactions} />
       </table>
     </>
   );

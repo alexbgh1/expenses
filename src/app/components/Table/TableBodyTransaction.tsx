@@ -4,14 +4,13 @@ import Badge from "../Badge";
 import { Transaction } from "@/app/types";
 
 interface TablebodyTransactionProps {
-  renderedTransactions: Transaction[];
-  handleSortTransactions: (a: any, b: any) => number;
+  currentTransactions: Transaction[];
 }
 
-const TableBodyTransaction = ({ renderedTransactions, handleSortTransactions }: TablebodyTransactionProps) => {
+const TableBodyTransaction = ({ currentTransactions }: TablebodyTransactionProps) => {
   return (
     <tbody className="[&_tr:last-child]:border-0">
-      {renderedTransactions.sort(handleSortTransactions).map((transaction, index) => (
+      {currentTransactions.map((transaction, index) => (
         <tr
           key={index}
           className="text-gray-700 dark:text-zinc-400 dark:hover:bg-zinc-900 hover:bg-gray-50 dark:border-zinc-600 border-b transition-colors"
