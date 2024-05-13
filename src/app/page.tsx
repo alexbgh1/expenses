@@ -8,7 +8,7 @@ import NavigationMain from "../components/Navigation/NavigationMain";
 import DragAndDropFile from "../components/DragAndDropFile";
 import TableTransactions from "../components/Table/TableTransactions";
 
-import { Transaction } from "@/types/transactions";
+import { Transaction } from "@/types/transaction";
 
 import readExpectedFile from "../utils/File/expectedFile";
 

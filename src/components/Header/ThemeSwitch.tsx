@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { LightbulbONIcon, LightbulbOFFIcon } from "@/app/icons/theme";
+import { LightbulbONIcon, LightbulbOFFIcon } from "@/icons/theme";
 
 const ThemeSwitch = () => {
   const { resolvedTheme, setTheme } = useTheme();

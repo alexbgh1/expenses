@@ -3,7 +3,7 @@ import { useState } from "react";
 import ArrowSort from "../ArrowSort";
 import TableHeaderCategory from "./TableHeaderCategory";
 
-import { HEADER_TYPES } from "@/app/constants/file";
+import { HEADER_TYPES } from "@/constants/file";
 import { TableHeaderItemProps } from "./types";
 
 const TableHeaderItem = ({

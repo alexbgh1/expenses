@@ -1,5 +1,5 @@
 import React from "react";
-import { XIcon } from "@/app/icons/icons";
+import { XIcon } from "@/icons/icons";
 
 interface MenuHeaderProps {
   handleOpen?: () => void;

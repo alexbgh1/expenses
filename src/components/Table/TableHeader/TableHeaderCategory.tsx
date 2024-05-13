@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
 import ArrowSort from "../ArrowSort";
-import { FilterIcon } from "@/app/icons/icons";
+import { FilterIcon } from "@/icons/icons";
 import CategoryMultipleSelect from "../CategoryMultipleSelect";
 
 import { filterCategories } from "../../../utils/Category/filterCategories";
 import { countEachCategory } from "../../../utils/Category/countEachCategory";
 
-import { Category } from "@/app/types";
+import { Category } from "@/types";
 import { TableHeaderCategoryProps } from "./types";
 
 const TableHeaderCategory = ({

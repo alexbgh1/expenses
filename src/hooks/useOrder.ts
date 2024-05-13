@@ -1,6 +1,6 @@
 "use client";
 import { useState, useCallback } from "react";
-import { FileHeader, SortOrder } from "@/app/types";
+import { FileHeader, SortOrder } from "@/types";
 
 const useOrder = () => {
   const [headerSelected, setHeaderSelected] = useState<FileHeader | null>(null);

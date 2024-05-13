@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
-import { ArrowUpZAIcon, ArrowDownAZIcon, ArrowUpWideShortIcon, ArrowDownShortWide } from "@/app/icons/arrows";
-import { SortOrder } from "@/app/types";
+import { ArrowUpZAIcon, ArrowDownAZIcon, ArrowUpWideShortIcon, ArrowDownShortWide } from "@/icons/arrows";
+import { SortOrder } from "@/types";
 
 interface ArrowSortProps {
   type: string;

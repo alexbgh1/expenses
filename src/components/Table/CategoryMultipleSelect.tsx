@@ -1,8 +1,8 @@
 import Badge from "../Badge";
 
-import { CATEGORIES_SORTED_OTHER_LAST } from "@/app/constants/categories";
+import { CATEGORIES_SORTED_OTHER_LAST } from "@/constants/categories";
 
-import { Category } from "@/app/types/categories";
+import { Category } from "@/types/categories";
 
 interface CategoryMultipleSelectProps {
   open: boolean;

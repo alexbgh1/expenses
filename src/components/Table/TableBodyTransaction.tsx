@@ -1,7 +1,7 @@
-import { MoreVerticalIcon } from "@/app/icons/icons";
+import { MoreVerticalIcon } from "@/icons/icons";
 import Badge from "../Badge";
 
-import { Transaction } from "@/app/types";
+import { Transaction } from "@/types";
 
 interface TablebodyTransactionProps {
   currentTransactions: Transaction[];

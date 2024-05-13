@@ -1,4 +1,4 @@
-import { Transaction, Category } from "@/app/types";
+import { Transaction, Category } from "@/types";
 import { useMemo } from "react";
 
 const countEachCategory = (transactions: Transaction[]) =>

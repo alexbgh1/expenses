@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { HomeIcon, TagIcon, TicketIcon } from "@/app/icons/icons";
+import { HomeIcon, TagIcon, TicketIcon } from "@/icons/icons";
 
 const MenuNavigation = () => {
   const path = usePathname();

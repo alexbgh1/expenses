@@ -1,4 +1,4 @@
-import { FileHeader, SortOrder, Transaction } from "@/app/types";
+import { FileHeader, SortOrder, Transaction } from "@/types";
 
 interface TableHeaderTransactionProps {
   transactions: Transaction[];

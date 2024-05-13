@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useOrder } from "../../hooks/useOrder";
-import { usePagination } from "@/app/hooks/usePagination";
+import { usePagination } from "@/hooks/usePagination";
 
 import TableHeaderTransaction from "./TableHeader/TableHeaderTransaction";
 import TableBodyTransaction from "./TableBodyTransaction";
 
-import { Transaction } from "@/app/types";
+import { Transaction } from "@/types";
 
 interface TableTransactionsProps {
   transactions: Transaction[];

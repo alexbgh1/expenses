@@ -1,6 +1,6 @@
 import TableHeaderItem from "./TableHeaderItem";
 
-import { FILE_HEADERS } from "@/app/constants/file";
+import { FILE_HEADERS } from "@/constants/file";
 
 import { TableHeaderTransactionProps } from "./types";
 const TableHeaderTransaction = ({

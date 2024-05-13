@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { MenuIcon } from "@/app/icons/icons";
+import { MenuIcon } from "@/icons/icons";
 import AsideMenuMobile from "./AsideMenuMobile";
 
 const NavigationMobile = () => {
