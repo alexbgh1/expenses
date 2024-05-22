@@ -3,17 +3,16 @@ import { useEffect, useState } from "react";
 import { useOrder } from "../../hooks/useOrder";
 import { usePagination } from "@/hooks/usePagination";
 
+import { useTransactionContext } from "../../contexts/TransactionContext";
+
 import TableHeaderTransaction from "./TableHeader/TableHeaderTransaction";
 import TableBodyTransaction from "./TableBodyTransaction";
 
 import { Transaction } from "@/types";
 
-interface TableTransactionsProps {
-  transactions: Transaction[];
-}
-
-const TableTransactions = ({ transactions }: TableTransactionsProps) => {
+const TableTransactions = () => {
   const { sortOrder, headerSelected, handleSort, handleSortTransactions } = useOrder();
+  const { transactions } = useTransactionContext();
 
   const [renderedTransactions, setRenderedTransactions] = useState([...transactions.sort(handleSortTransactions)]);
   const [currentTransactions, setCurrentTransactions] = useState<Transaction[]>([]);
