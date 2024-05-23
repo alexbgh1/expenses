@@ -5,6 +5,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "../providers/theme-provider";
 import { TransactionProvider } from "@/contexts/TransactionContext";
+import NavLayout from "@/components/layouts/NavLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system">
           <TransactionProvider>
-            {children}
-
+            <NavLayout>{children}</NavLayout>
             <Toaster />
           </TransactionProvider>
         </ThemeProvider>
