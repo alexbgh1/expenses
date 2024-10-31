@@ -32,10 +32,10 @@
 /* pattern diagonal  yellow/black */
 .diagonal-pattern {
   background-image: repeating-linear-gradient(
-    140deg,
+    145deg,
     transparent,
-    transparent 25px,
-    rgba(0, 0, 0, 1) 25px,
-    rgba(0, 0, 0, 1) 50px
+    transparent 20px,
+    rgba(0, 0, 0, 1) 20px,
+    rgba(0, 0, 0, 1) 40px
   );
 }
