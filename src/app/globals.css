@@ -1,4 +1,41 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-  
+@tailwind components;
+@tailwind utilities;
+
+@keyframes hammer {
+  0%,
+  100% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+}
+.animate-hammer {
+  animation: hammer 1s infinite;
+}
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0) translateY(0px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1) translateY(15px);
+  }
+}
+.animate-sparkle {
+  animation: sparkle 1s infinite;
+}
+
+/* pattern diagonal  yellow/black */
+.diagonal-pattern {
+  background-image: repeating-linear-gradient(
+    140deg,
+    transparent,
+    transparent 25px,
+    rgba(0, 0, 0, 1) 25px,
+    rgba(0, 0, 0, 1) 50px
+  );
+}
